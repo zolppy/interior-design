@@ -1,103 +1,260 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+import { useRef } from "react";
+import Header from "@/app/components/Header";
+import Section from "@/app/components/Section";
+import SectionTitle from "@/app/components/SectionTitle";
+import Case from "@/app/components/Case";
+import Designer from "@/app/components/Designer";
+import Package from "@/app/components/Package";
+import PackageHeader from "@/app/components/PackageHeader";
+import PackageList from "@/app/components/PackageList";
+import PackageListItem from "@/app/components/PackageListItem";
+import PackagePrice from "@/app/components/PackagePrice";
+import PackageButton from "@/app/components/PackageButton";
+import FormInputWrapper from "@/app/components/FormInputWrapper";
+import FormInput from "@/app/components/FormInput";
+import FormButton from "@/app/components/FormButton";
+import Menu from "@/app/components/menu/Menu";
+import Footer from "@/app/components/Footer";
+import { showcases } from "@/utils/mocks/showcase";
+import { designers } from "@/utils/mocks/designers";
+import { SectionEnum } from "@/utils/enums/section";
+import { sectionType } from "@/utils/types/section";
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
-}
+const Home = () => {
+    // Gera prop drilling, transformar isso em contexto
+    const homeRef = useRef<any>(undefined);
+    const showcaseRef = useRef<any>(undefined);
+    const servicesRef = useRef<any>(undefined);
+    const designersRef = useRef<any>(undefined);
+    const packagesRef = useRef<any>(undefined);
+    const contactRef = useRef<any>(undefined);
+
+    const scrollTo = (to: sectionType) => {
+        switch (to) {
+            case SectionEnum.Home:
+                homeRef?.current.scrollIntoView();
+                break;
+            case SectionEnum.Showcase:
+                showcaseRef?.current.scrollIntoView();
+                break;
+            case SectionEnum.Services:
+                servicesRef?.current.scrollIntoView();
+                break;
+            case SectionEnum.Designers:
+                designersRef?.current.scrollIntoView();
+                break;
+            case SectionEnum.Packages:
+                packagesRef?.current.scrollIntoView();
+                break;
+            case SectionEnum.Contact:
+                contactRef?.current.scrollIntoView();
+        }
+    };
+
+    return (
+        <>
+            <div ref={homeRef}></div>
+            <Header />
+            <div className="hidden lg:block">
+                <Menu scrollTo={scrollTo} />
+            </div>
+            <Menu scrollTo={scrollTo} />
+            <main className="mt-[69px] pt-6 px-3.5 lg:ml-[320px] lg:px-14">
+                <h1 className="text-[64px] font-medium pb-4">
+                    Interior <br className="md:hidden" /> Design
+                </h1>
+                <Section ref={showcaseRef}>
+                    <SectionTitle>Showcase.</SectionTitle>
+                    <ul className="grid grid-cols-1 gap-y-2.5 gap-x-4 md:grid-cols-2">
+                        {showcases.map(({ id, title, alt, path }) => (
+                            <Case
+                                key={id}
+                                title={title}
+                                alt={alt}
+                                path={path}
+                            />
+                        ))}
+                    </ul>
+                </Section>
+                <Section ref={servicesRef}>
+                    <SectionTitle>Services.</SectionTitle>
+                    <div className="flex flex-col gap-y-4">
+                        <p>
+                            We are a interior design service that focus on
+                            what's best for your home and what's best for you!
+                        </p>
+                        <p>
+                            Some text about our services - what we do and what
+                            we offer. We are lorem ipsum consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia
+                            deserunt mollit anim id est laborum consectetur
+                            adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim
+                            veniam, quis nostrud exercitation ullamco laboris
+                            nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                    </div>
+                </Section>
+                <Section ref={designersRef}>
+                    <SectionTitle>Designers.</SectionTitle>
+                    <div className="flex flex-col gap-y-4">
+                        <p>The best team in the world.</p>
+                        <p>
+                            We are lorem ipsum consectetur adipiscing elit, sed
+                            do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea
+                            commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia
+                            deserunt mollit anim id est laborum consectetur
+                            adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et quis nostrud exercitation ullamco laboris
+                            nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                        <h3 className="font-bold">
+                            Our designers are thoughtfully chosen:
+                        </h3>
+                        <ul className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                            {designers.map(
+                                ({ id, photo, name, role, description }) => (
+                                    <Designer
+                                        key={id}
+                                        photo={photo}
+                                        name={name}
+                                        role={role}
+                                        description={description}
+                                    />
+                                )
+                            )}
+                        </ul>
+                    </div>
+                </Section>
+                <Section ref={packagesRef}>
+                    <SectionTitle>Packages.</SectionTitle>
+                    <div className="flex flex-col gap-y-4">
+                        <p>
+                            Some text our prices. Lorem ipsum consectetur
+                            adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim
+                            veniam, quis nostrud exercitation ullamco laboris
+                            nisi ut aliquip ex ea commodo consequat. Duis aute
+                            irure
+                        </p>
+                        <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                            <Package>
+                                <PackageHeader bgColor="#616161">
+                                    Basic
+                                </PackageHeader>
+                                <PackageList>
+                                    <PackageListItem>
+                                        Floorplanning
+                                    </PackageListItem>
+                                    <PackageListItem>
+                                        10 hours support
+                                    </PackageListItem>
+                                    <PackageListItem>
+                                        Photography
+                                    </PackageListItem>
+                                    <PackageListItem>
+                                        20% furniture discount
+                                    </PackageListItem>
+                                    <PackageListItem>
+                                        Good deals
+                                    </PackageListItem>
+                                    <PackageListItem>
+                                        <PackagePrice
+                                            price={199}
+                                            description="per room"
+                                        />
+                                    </PackageListItem>
+                                    <PackageListItem>
+                                        <PackageButton
+                                            bgColor="#fff"
+                                            textColor="#000"
+                                        />
+                                    </PackageListItem>
+                                </PackageList>
+                            </Package>
+                            <Package>
+                                <PackageHeader bgColor="#f44336">
+                                    Pro
+                                </PackageHeader>
+                                <PackageList>
+                                    <PackageListItem>
+                                        Floorplanning
+                                    </PackageListItem>
+                                    <PackageListItem>
+                                        50 hours support
+                                    </PackageListItem>
+                                    <PackageListItem>
+                                        Photography
+                                    </PackageListItem>
+                                    <PackageListItem>
+                                        50% furniture discount
+                                    </PackageListItem>
+                                    <PackageListItem>
+                                        GREAT deals
+                                    </PackageListItem>
+                                    <PackageListItem>
+                                        <PackagePrice
+                                            price={249}
+                                            description="per room"
+                                        />
+                                    </PackageListItem>
+                                    <PackageListItem>
+                                        <PackageButton
+                                            bgColor="#f44336"
+                                            textColor="#fff"
+                                        />
+                                    </PackageListItem>
+                                </PackageList>
+                            </Package>
+                        </ul>
+                    </div>
+                </Section>
+                <Section ref={contactRef}>
+                    <SectionTitle>Contact.</SectionTitle>
+                    <div className="flex flex-col gap-y-4">
+                        <p>
+                            Do you want us to style your home? Fill out the form
+                            and fill me in with the details :) We love meeting
+                            new people!
+                        </p>
+                        <form className="flex flex-col gap-y-4">
+                            <FormInputWrapper>
+                                <label htmlFor="name">Name</label>
+                                <FormInput id="name" />
+                            </FormInputWrapper>
+                            <FormInputWrapper>
+                                <label htmlFor="email">E-mail</label>
+                                <FormInput id="email" />
+                            </FormInputWrapper>
+                            <FormInputWrapper>
+                                <label htmlFor="message">Message</label>
+                                <textarea
+                                    required
+                                    id="message"
+                                    className="border border-neutral-300 p-2"
+                                ></textarea>
+                            </FormInputWrapper>
+                            <FormButton />
+                        </form>
+                    </div>
+                </Section>
+            </main>
+            <Footer />
+        </>
+    );
+};
+
+export default Home;
