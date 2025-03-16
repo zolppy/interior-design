@@ -28,7 +28,7 @@ const RootLayout = ({
                     {children}
                 </body>
             </MenuProvider>
-            <GoogleAnalytics gaId="G-BL0G7C98H9" />
+            <GoogleAnalytics gaId="G-C2VWGZBK20" />
         </html>
     );
 };
