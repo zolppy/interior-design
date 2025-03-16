@@ -2,6 +2,7 @@ import CloseMenuBtn from "@/app/components/CloseMenuBtn";
 import MenuItem from "@/app/components/menu/MenuItem";
 import { useMenu } from "@/context/MenuCtx";
 import { sectionType } from "@/utils/types/section";
+import { SectionEnum } from "@/utils/enums/section";
 
 // Animação com bug
 {
@@ -21,7 +22,7 @@ import { sectionType } from "@/utils/types/section";
                     Company <br /> Name
                 </h1>
                 <ul>
-                    <MenuItem scrollTo={scrollTo} to="home">
+                    <MenuItem scrollTo={scrollTo} to=Section>
                         Home
                     </MenuItem>
                     <MenuItem scrollTo={scrollTo} to="showcase">
@@ -60,22 +61,37 @@ const Menu = ({ scrollTo }: { scrollTo: (to: sectionType) => void }) => {
                             Company <br /> Name
                         </h1>
                         <ul>
-                            <MenuItem scrollTo={scrollTo} to="home">
+                            <MenuItem scrollTo={scrollTo} to={SectionEnum.Home}>
                                 Home
                             </MenuItem>
-                            <MenuItem scrollTo={scrollTo} to="showcase">
+                            <MenuItem
+                                scrollTo={scrollTo}
+                                to={SectionEnum.Showcase}
+                            >
                                 Showcase
                             </MenuItem>
-                            <MenuItem scrollTo={scrollTo} to="services">
+                            <MenuItem
+                                scrollTo={scrollTo}
+                                to={SectionEnum.Services}
+                            >
                                 Services
                             </MenuItem>
-                            <MenuItem scrollTo={scrollTo} to="designers">
+                            <MenuItem
+                                scrollTo={scrollTo}
+                                to={SectionEnum.Designers}
+                            >
                                 Designers
                             </MenuItem>
-                            <MenuItem scrollTo={scrollTo} to="packages">
+                            <MenuItem
+                                scrollTo={scrollTo}
+                                to={SectionEnum.Packages}
+                            >
                                 Packages
                             </MenuItem>
-                            <MenuItem scrollTo={scrollTo} to="contact">
+                            <MenuItem
+                                scrollTo={scrollTo}
+                                to={SectionEnum.Contact}
+                            >
                                 Contact
                             </MenuItem>
                         </ul>

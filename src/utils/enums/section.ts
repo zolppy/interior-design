@@ -1,5 +1,5 @@
 enum SectionEnum {
-    Home = "home",
+    Home = "homef",
     Showcase = "showcase",
     Services = "services",
     Designers = "designers",

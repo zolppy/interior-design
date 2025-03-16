@@ -1,11 +1,11 @@
-import { Section } from "@/utils/enums/section";
+import { SectionEnum } from "@/utils/enums/section";
 
 type sectionType =
-    | Section.Home
-    | Section.Showcase
-    | Section.Services
-    | Section.Designers
-    | Section.Packages
-    | Section.Contact;
+    | SectionEnum.Home
+    | SectionEnum.Showcase
+    | SectionEnum.Services
+    | SectionEnum.Designers
+    | SectionEnum.Packages
+    | SectionEnum.Contact;
 
 export type { sectionType };
