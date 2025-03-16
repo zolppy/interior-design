@@ -15,7 +15,9 @@ import PackageButton from "@/app/components/PackageButton";
 import FormInputWrapper from "@/app/components/FormInputWrapper";
 import FormInput from "@/app/components/FormInput";
 import FormButton from "@/app/components/FormButton";
+import CloseMenuBtn from "@/app/components/CloseMenuBtn";
 import Menu from "@/app/components/menu/Menu";
+import MenuItem from "@/app/components/menu/MenuItem";
 import Footer from "@/app/components/Footer";
 import { showcases } from "@/utils/mocks/showcase";
 import { designers } from "@/utils/mocks/designers";
@@ -58,7 +60,35 @@ const Home = () => {
             <div ref={homeRef}></div>
             <Header />
             <div className="hidden lg:block">
-                <Menu scrollTo={scrollTo} />
+                <nav className="h-screen w-[320px] bg-[#f44336] fixed top-0 left-0 z-30 p-8 flex flex-col gap-y-16 overflow-x-hidden">
+                    <CloseMenuBtn />
+                    <h1 className="text-white text-2xl">
+                        Company <br /> Name
+                    </h1>
+                    <ul>
+                        <MenuItem scrollTo={scrollTo} to={SectionEnum.Home}>
+                            Home
+                        </MenuItem>
+                        <MenuItem scrollTo={scrollTo} to={SectionEnum.Showcase}>
+                            Showcase
+                        </MenuItem>
+                        <MenuItem scrollTo={scrollTo} to={SectionEnum.Services}>
+                            Services
+                        </MenuItem>
+                        <MenuItem
+                            scrollTo={scrollTo}
+                            to={SectionEnum.Designers}
+                        >
+                            Designers
+                        </MenuItem>
+                        <MenuItem scrollTo={scrollTo} to={SectionEnum.Packages}>
+                            Packages
+                        </MenuItem>
+                        <MenuItem scrollTo={scrollTo} to={SectionEnum.Contact}>
+                            Contact
+                        </MenuItem>
+                    </ul>
+                </nav>
             </div>
             <Menu scrollTo={scrollTo} />
             <main className="mt-[69px] pt-6 px-3.5 lg:ml-[320px] lg:px-14">

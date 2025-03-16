@@ -54,7 +54,7 @@ const Menu = ({ scrollTo }: { scrollTo: (to: sectionType) => void }) => {
         <div>
             {menuIsOpen && (
                 <>
-                    <div className="z-20 bg-black h-screen w-screen fixed left-0 top-0 opacity-50"></div>
+                    <div className="z-20 bg-black h-screen w-screen fixed left-0 top-0 opacity-50 lg:hidden"></div>
                     <nav className="h-screen w-[320px] bg-[#f44336] fixed top-0 left-0 z-30 p-8 flex flex-col gap-y-16 overflow-x-hidden">
                         <CloseMenuBtn />
                         <h1 className="text-white text-2xl">
