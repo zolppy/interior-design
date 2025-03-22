@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import Header from "@/app/components/Header";
 import Section from "@/app/components/Section";
 import SectionTitle from "@/app/components/SectionTitle";
@@ -15,82 +14,29 @@ import PackageButton from "@/app/components/PackageButton";
 import FormInputWrapper from "@/app/components/FormInputWrapper";
 import FormInput from "@/app/components/FormInput";
 import FormButton from "@/app/components/FormButton";
-import CloseMenuBtn from "@/app/components/CloseMenuBtn";
 import Menu from "@/app/components/menu/Menu";
-import MenuItem from "@/app/components/menu/MenuItem";
+import MenuDesktop from "./components/menu/MenuDesktop";
 import Footer from "@/app/components/Footer";
+import { useNav } from "@/context/NavCtx";
 import { showcases } from "@/utils/mocks/showcase";
 import { designers } from "@/utils/mocks/designers";
-import { SectionEnum } from "@/utils/enums/section";
-import { sectionType } from "@/utils/types/section";
 
 const Home = () => {
-    // Gera prop drilling, transformar isso em contexto
-    const homeRef = useRef<any>(undefined);
-    const showcaseRef = useRef<any>(undefined);
-    const servicesRef = useRef<any>(undefined);
-    const designersRef = useRef<any>(undefined);
-    const packagesRef = useRef<any>(undefined);
-    const contactRef = useRef<any>(undefined);
-
-    const scrollTo = (to: sectionType) => {
-        switch (to) {
-            case SectionEnum.Home:
-                homeRef?.current.scrollIntoView();
-                break;
-            case SectionEnum.Showcase:
-                showcaseRef?.current.scrollIntoView();
-                break;
-            case SectionEnum.Services:
-                servicesRef?.current.scrollIntoView();
-                break;
-            case SectionEnum.Designers:
-                designersRef?.current.scrollIntoView();
-                break;
-            case SectionEnum.Packages:
-                packagesRef?.current.scrollIntoView();
-                break;
-            case SectionEnum.Contact:
-                contactRef?.current.scrollIntoView();
-        }
-    };
+    const {
+        homeRef,
+        showcaseRef,
+        servicesRef,
+        designersRef,
+        packagesRef,
+        contactRef,
+    } = useNav();
 
     return (
         <>
             <div ref={homeRef}></div>
             <Header />
-            <div className="hidden lg:block">
-                <nav className="h-screen w-[320px] bg-[#f44336] fixed top-0 left-0 z-30 p-8 flex flex-col gap-y-16 overflow-x-hidden">
-                    <CloseMenuBtn />
-                    <h1 className="text-white text-2xl">
-                        Company <br /> Name
-                    </h1>
-                    <ul>
-                        <MenuItem scrollTo={scrollTo} to={SectionEnum.Home}>
-                            Home
-                        </MenuItem>
-                        <MenuItem scrollTo={scrollTo} to={SectionEnum.Showcase}>
-                            Showcase
-                        </MenuItem>
-                        <MenuItem scrollTo={scrollTo} to={SectionEnum.Services}>
-                            Services
-                        </MenuItem>
-                        <MenuItem
-                            scrollTo={scrollTo}
-                            to={SectionEnum.Designers}
-                        >
-                            Designers
-                        </MenuItem>
-                        <MenuItem scrollTo={scrollTo} to={SectionEnum.Packages}>
-                            Packages
-                        </MenuItem>
-                        <MenuItem scrollTo={scrollTo} to={SectionEnum.Contact}>
-                            Contact
-                        </MenuItem>
-                    </ul>
-                </nav>
-            </div>
-            <Menu scrollTo={scrollTo} />
+            <Menu />
+            <MenuDesktop />
             <main className="mt-[69px] pt-6 px-3.5 lg:ml-[320px] lg:px-14">
                 <h1 className="text-[64px] font-medium pb-4">
                     Interior <br className="md:hidden" /> Design

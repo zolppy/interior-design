@@ -8,7 +8,7 @@ const Designer = ({
     description,
 }: Omit<IDesigner, "id">) => {
     return (
-        <li className="bg-[#f1f1f1] shadow-md min-w-[320px] w-[100%] max-w-[480px] md:min-w-[200px]">
+        <li className="bg-[#f1f1f1] min-w-[320px] w-[100%] max-w-[480px] md:min-w-[200px]">
             <Image
                 src={photo.path}
                 title={photo.title}

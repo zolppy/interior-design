@@ -6,10 +6,17 @@ interface IPackageButton {
 const PackageButton = ({ bgColor, textColor }: IPackageButton) => {
     return (
         <button
-            style={{ backgroundColor: bgColor }}
-            className="py-3 px-6 active:bg-black active:text-white lg:hover:bg-black lg:hover:text-white"
+            style={
+                {
+                    "--bg-color": bgColor,
+                    "--text-color": textColor,
+                } as React.CSSProperties
+            }
+            className="bg-[var(--bg-color)] py-3 px-6 active:bg-black lg:hover:bg-black"
         >
-            <span style={{ color: textColor }}>Sign up</span>
+            <span className="text-[var(--text-color)] active:text-white lg:hover:text-white">
+                Sign up
+            </span>
         </button>
     );
 };
