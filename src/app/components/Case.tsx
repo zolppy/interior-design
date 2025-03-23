@@ -1,7 +1,7 @@
 import Image from "next/image";
-import type { IImage } from "@/utils/types/image";
+import type { Img as ImgInterface } from "@/utils/types/image";
 
-const Case = ({ title, alt, path }: Omit<IImage, "id">) => {
+const Case = ({ title, alt, path }: Omit<ImgInterface, "id">) => {
     return (
         <li>
             <Image

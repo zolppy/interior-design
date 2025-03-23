@@ -1,12 +1,12 @@
 import Image from "next/image";
-import type { IDesigner } from "@/utils/types/designer";
+import type { Designer as DesignerInterface } from "@/utils/types/designer";
 
 const Designer = ({
     photo,
     name,
     role,
     description,
-}: Omit<IDesigner, "id">) => {
+}: Omit<DesignerInterface, "id">) => {
     return (
         <li className="bg-[#f1f1f1] min-w-[320px] w-[100%] max-w-[480px] md:min-w-[200px]">
             <Image
