@@ -21,7 +21,7 @@ const Menu = () => {
                         animate={{ width: "320px", opacity: 1 }}
                         exit={{ width: 0, opacity: 0 }}
                         transition={{ type: "spring", duration: 0.4 }}
-                        className="h-screen bg-[#f44336] fixed top-0 z-30 p-8 flex-col gap-y-16 overflow-x-hidden flex"
+                        className="h-screen bg-[#f44336] fixed top-0 z-30 p-8 flex-col gap-y-16 overflow-x-hidden flex font-bold"
                     >
                         <CloseMenuBtn />
                         <h1 className="text-white text-2xl">
