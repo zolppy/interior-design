@@ -1,50 +1,50 @@
 "use client";
 
-import { SectionEnum } from "@/utils/enums/section";
-import type { sectionType } from "@/utils/types/section";
-import { createContext, useContext, ReactNode, useRef } from "react";
+import { Section as SectionEnum } from "@/utils/enums/section";
+import type { Section as SectionType } from "@/utils/types/section";
+import { createContext, useContext, ReactNode, useRef, RefObject } from "react";
 
 interface INavCtx {
-    homeRef: any;
-    showcaseRef: any;
-    servicesRef: any;
-    designersRef: any;
-    packagesRef: any;
-    contactRef: any;
-    scrollTo: (to: sectionType) => void;
+    homeRef: RefObject<HTMLElement | undefined>;
+    showcaseRef: RefObject<HTMLElement | undefined>;
+    servicesRef: RefObject<HTMLElement | undefined>;
+    designersRef: RefObject<HTMLElement | undefined>;
+    packagesRef: RefObject<HTMLElement | undefined>;
+    contactRef: RefObject<HTMLElement | undefined>;
+    scrollTo: (to: SectionType) => void;
 }
 
 const NavCtx = createContext<INavCtx | undefined>(undefined);
 
 const NavProvider = ({ children }: { children: ReactNode }) => {
-    const homeRef = useRef<any>(undefined);
-    const showcaseRef = useRef<any>(undefined);
-    const servicesRef = useRef<any>(undefined);
-    const designersRef = useRef<any>(undefined);
-    const packagesRef = useRef<any>(undefined);
-    const contactRef = useRef<any>(undefined);
+    const homeRef = useRef<HTMLElement | undefined>(undefined);
+    const showcaseRef = useRef<HTMLElement | undefined>(undefined);
+    const servicesRef = useRef<HTMLElement | undefined>(undefined);
+    const designersRef = useRef<HTMLElement | undefined>(undefined);
+    const packagesRef = useRef<HTMLElement | undefined>(undefined);
+    const contactRef = useRef<HTMLElement | undefined>(undefined);
 
-    const scrollTo = (to: sectionType) => {
-        const scrollSettings = { behavior: "smooth" };
+    const scrollTo = (to: SectionType) => {
+        const scrollSettings: ScrollIntoViewOptions = { behavior: "smooth" };
 
         switch (to) {
             case SectionEnum.Home:
-                homeRef?.current.scrollIntoView(scrollSettings);
+                homeRef.current?.scrollIntoView(scrollSettings);
                 break;
             case SectionEnum.Showcase:
-                showcaseRef?.current.scrollIntoView(scrollSettings);
+                showcaseRef.current?.scrollIntoView(scrollSettings);
                 break;
             case SectionEnum.Services:
-                servicesRef?.current.scrollIntoView(scrollSettings);
+                servicesRef.current?.scrollIntoView(scrollSettings);
                 break;
             case SectionEnum.Designers:
-                designersRef?.current.scrollIntoView(scrollSettings);
+                designersRef.current?.scrollIntoView(scrollSettings);
                 break;
             case SectionEnum.Packages:
-                packagesRef?.current.scrollIntoView(scrollSettings);
+                packagesRef.current?.scrollIntoView(scrollSettings);
                 break;
             case SectionEnum.Contact:
-                contactRef?.current.scrollIntoView(scrollSettings);
+                contactRef.current?.scrollIntoView(scrollSettings);
         }
     };
 

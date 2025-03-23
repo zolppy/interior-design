@@ -14,4 +14,6 @@ const Case = ({ title, alt, path }: Omit<IImage, "id">) => {
     );
 };
 
+Case.displayName = "Case";
+
 export default Case;

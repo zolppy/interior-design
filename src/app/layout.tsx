@@ -8,7 +8,7 @@ import "./globals.css";
 export const metadata: Metadata = {
     title: "Interior Design",
     description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo, ab, eveniet dolorum libero enim eligendi cum nisi rerum omnis, quasi soluta quaerat.",
+        "The best interior design projects, created by highly qualified professionals. Come and check out our success stories and place your order now.",
     authors: [
         {
             name: "Gabriel Cavalcante de Jesus Oliveira",
@@ -23,7 +23,7 @@ const RootLayout = ({
     children: React.ReactNode;
 }>) => {
     return (
-        <html lang="pt-br">
+        <html lang="en">
             <MenuProvider>
                 <NavProvider>
                     <body className={`${poppins.className} antialiased`}>

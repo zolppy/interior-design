@@ -1,9 +1,9 @@
-interface IPackageHeader {
+interface IPackTitle {
     children: React.ReactNode;
     bgColor: string;
 }
 
-const PackageHeader = ({ children, bgColor }: IPackageHeader) => {
+const PackTitle = ({ children, bgColor }: IPackTitle) => {
     return (
         <div
             style={{ backgroundColor: bgColor }}
@@ -14,4 +14,6 @@ const PackageHeader = ({ children, bgColor }: IPackageHeader) => {
     );
 };
 
-export default PackageHeader;
+PackTitle.displayName = "PackTitle";
+
+export default PackTitle;

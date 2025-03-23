@@ -1,11 +1,11 @@
-import type { IImage } from "@/utils/types/image";
+import type { Img as ImgInterface } from "@/utils/types/image";
 
-interface IDesigner {
+interface Designer {
     id: string;
-    photo: IImage;
+    photo: ImgInterface;
     name: string;
     role: string;
     description: string;
 }
 
-export type { IDesigner };
+export type { Designer };

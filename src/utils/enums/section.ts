@@ -1,5 +1,5 @@
-enum SectionEnum {
-    Home = "homef",
+enum Section {
+    Home = "home",
     Showcase = "showcase",
     Services = "services",
     Designers = "designers",
@@ -7,4 +7,4 @@ enum SectionEnum {
     Contact = "contact",
 }
 
-export { SectionEnum };
+export { Section };

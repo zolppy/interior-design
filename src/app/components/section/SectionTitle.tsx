@@ -7,4 +7,6 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
+SectionTitle.displayName = "SectionTitle";
+
 export default SectionTitle;

@@ -1,10 +1,10 @@
 import { StaticImageData } from "next/image";
 
-interface IImage {
+interface Img {
     id: string;
     title: string;
     alt: string;
     path: StaticImageData;
 }
 
-export type { IImage };
+export type { Img };

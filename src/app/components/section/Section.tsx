@@ -12,4 +12,6 @@ const Section = ({
     );
 };
 
+Section.displayName = "Section";
+
 export default Section;

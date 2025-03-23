@@ -1,6 +1,6 @@
-import { SectionEnum } from "@/utils/enums/section";
+import { Section as SectionEnum } from "@/utils/enums/section";
 
-type sectionType =
+type Section =
     | SectionEnum.Home
     | SectionEnum.Showcase
     | SectionEnum.Services
@@ -8,4 +8,4 @@ type sectionType =
     | SectionEnum.Packages
     | SectionEnum.Contact;
 
-export type { sectionType };
+export type { Section };

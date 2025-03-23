@@ -24,4 +24,6 @@ const Designer = ({
     );
 };
 
+Designer.displayName = "Designer";
+
 export default Designer;

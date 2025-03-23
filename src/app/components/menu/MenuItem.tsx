@@ -1,10 +1,10 @@
 import { useMenu } from "@/context/MenuCtx";
-import { sectionType } from "@/utils/types/section";
+import { Section as SectionType } from "@/utils/types/section";
 
 interface IMenuItem {
     children: React.ReactNode;
-    scrollTo: (to: sectionType) => void;
-    to: sectionType;
+    scrollTo: (to: SectionType) => void;
+    to: SectionType;
 }
 
 const MenuItem = ({ children, scrollTo, to }: IMenuItem) => {

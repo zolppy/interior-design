@@ -9,4 +9,6 @@ const FormInput = ({ id }: { id: string }) => {
     );
 };
 
+FormInput.displayName = "FormInput";
+
 export default FormInput;

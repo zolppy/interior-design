@@ -1,24 +1,24 @@
 "use client";
 
 import Header from "@/app/components/Header";
-import Section from "@/app/components/Section";
-import SectionTitle from "@/app/components/SectionTitle";
+import Section from "@/app/components/section/Section";
+import SectionTitle from "@/app/components/section/SectionTitle";
 import Case from "@/app/components/Case";
 import Designer from "@/app/components/Designer";
-import Package from "@/app/components/Package";
-import PackageHeader from "@/app/components/PackageHeader";
-import PackageList from "@/app/components/PackageList";
-import PackageListItem from "@/app/components/PackageListItem";
-import PackagePrice from "@/app/components/PackagePrice";
-import PackageButton from "@/app/components/PackageButton";
-import FormInputWrapper from "@/app/components/FormInputWrapper";
-import FormInput from "@/app/components/FormInput";
-import FormButton from "@/app/components/FormButton";
+import Package from "@/app/components/pack/Pack";
+import PackageHeader from "@/app/components/pack/PackTitle";
+import PackageList from "@/app/components/pack/PackList";
+import PackageListItem from "@/app/components/pack/PackItem";
+import PackagePrice from "@/app/components/pack/PackPrice";
+import PackageButton from "@/app/components/pack/PackBtn";
+import FormInputWrapper from "@/app/components/form/FormInputWrapper";
+import FormInput from "@/app/components/form/FormInput";
+import FormButton from "@/app/components/form/FormBtn";
 import Menu from "@/app/components/menu/Menu";
 import MenuDesktop from "./components/menu/MenuDesktop";
 import Footer from "@/app/components/Footer";
 import { useNav } from "@/context/NavCtx";
-import { showcases } from "@/utils/mocks/showcase";
+import { showcases } from "@/utils/mocks/showcases";
 import { designers } from "@/utils/mocks/designers";
 
 const Home = () => {
@@ -33,8 +33,7 @@ const Home = () => {
 
     return (
         <>
-            <div ref={homeRef}></div>
-            <Header />
+            <Header ref={homeRef} />
             <Menu />
             <MenuDesktop />
             <main className="mt-[69px] pt-6 px-3.5 lg:ml-[320px] lg:px-14">
