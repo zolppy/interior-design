@@ -22,18 +22,12 @@ import { showcases } from "@/utils/mocks/showcases";
 import { designers } from "@/utils/mocks/designers";
 
 const Home = () => {
-    const {
-        homeRef,
-        showcaseRef,
-        servicesRef,
-        designersRef,
-        packagesRef,
-        contactRef,
-    } = useNav();
+    const { showcaseRef, servicesRef, designersRef, packagesRef, contactRef } =
+        useNav();
 
     return (
         <>
-            <Header ref={homeRef} />
+            <Header />
             <Menu />
             <MenuDesktop />
             <main className="mt-[69px] pt-6 px-3.5 lg:ml-[320px] lg:px-14">

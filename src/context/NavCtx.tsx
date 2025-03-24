@@ -2,10 +2,17 @@
 
 import { Section as SectionEnum } from "@/utils/enums/section";
 import type { Section as SectionType } from "@/utils/types/section";
-import { createContext, useContext, ReactNode, useRef, RefObject } from "react";
+import {
+    createContext,
+    useContext,
+    ReactNode,
+    useRef,
+    RefObject,
+    useState,
+    useEffect,
+} from "react";
 
 interface INavCtx {
-    homeRef: RefObject<HTMLElement | undefined>;
     showcaseRef: RefObject<HTMLElement | undefined>;
     servicesRef: RefObject<HTMLElement | undefined>;
     designersRef: RefObject<HTMLElement | undefined>;
@@ -17,41 +24,82 @@ interface INavCtx {
 const NavCtx = createContext<INavCtx | undefined>(undefined);
 
 const NavProvider = ({ children }: { children: ReactNode }) => {
-    const homeRef = useRef<HTMLElement | undefined>(undefined);
     const showcaseRef = useRef<HTMLElement | undefined>(undefined);
     const servicesRef = useRef<HTMLElement | undefined>(undefined);
     const designersRef = useRef<HTMLElement | undefined>(undefined);
     const packagesRef = useRef<HTMLElement | undefined>(undefined);
     const contactRef = useRef<HTMLElement | undefined>(undefined);
+    const [width, setWidth] = useState<number>(0);
+
+    useEffect(() => {
+        const checkScreenWidth = () => {
+            const screenWidth = window.innerWidth;
+            setWidth(screenWidth);
+        };
+
+        checkScreenWidth();
+
+        window.addEventListener("resize", checkScreenWidth);
+
+        return () => {
+            window.removeEventListener("resize", checkScreenWidth);
+        };
+    }, []);
+
+    const calculateElTop = (
+        ref: RefObject<HTMLElement | undefined>
+    ): number => {
+        const el = ref.current;
+        const OffsetTop = el?.offsetTop || 0;
+        // 69 is the header height
+        // 1024 is the Tailwind CSS size for large screens
+        const top = width >= 1024 ? OffsetTop : OffsetTop - 69;
+
+        return top;
+    };
+
+    const setScrollSettings = (
+        top: number = 0,
+        left: number = 0,
+        behavior: ScrollBehavior = "smooth"
+    ) => {
+        return {
+            top: top,
+            left: left,
+            behavior: behavior,
+        };
+    };
 
     const scrollTo = (to: SectionType) => {
-        const scrollSettings: ScrollIntoViewOptions = { behavior: "smooth" };
-
         switch (to) {
             case SectionEnum.Home:
-                homeRef.current?.scrollIntoView(scrollSettings);
+                window.scroll(setScrollSettings());
                 break;
             case SectionEnum.Showcase:
-                showcaseRef.current?.scrollIntoView(scrollSettings);
+                const showcaseTop = calculateElTop(showcaseRef);
+                window.scroll(setScrollSettings(showcaseTop));
                 break;
             case SectionEnum.Services:
-                servicesRef.current?.scrollIntoView(scrollSettings);
+                const servicesTop = calculateElTop(servicesRef);
+                window.scroll(setScrollSettings(servicesTop));
                 break;
             case SectionEnum.Designers:
-                designersRef.current?.scrollIntoView(scrollSettings);
+                const designersTop = calculateElTop(designersRef);
+                window.scroll(setScrollSettings(designersTop));
                 break;
             case SectionEnum.Packages:
-                packagesRef.current?.scrollIntoView(scrollSettings);
+                const packsTop = calculateElTop(packagesRef);
+                window.scroll(setScrollSettings(packsTop));
                 break;
             case SectionEnum.Contact:
-                contactRef.current?.scrollIntoView(scrollSettings);
+                const contactTop = calculateElTop(contactRef);
+                window.scroll(setScrollSettings(contactTop));
         }
     };
 
     return (
         <NavCtx.Provider
             value={{
-                homeRef,
                 showcaseRef,
                 servicesRef,
                 designersRef,
