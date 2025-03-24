@@ -1,12 +1,17 @@
+import { ReactNode, RefObject } from "react";
+
 const Section = ({
     children,
     ref,
 }: {
-    children: React.ReactNode;
-    ref: any;
+    children: ReactNode;
+    ref: RefObject<HTMLElement | undefined>;
 }) => {
     return (
-        <section ref={ref} className="flex flex-col gap-y-5 pb-[105px]">
+        <section
+            ref={ref as RefObject<HTMLElement>}
+            className="flex flex-col gap-y-5 pb-[105px]"
+        >
             {children}
         </section>
     );

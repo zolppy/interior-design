@@ -22,7 +22,7 @@ import { showcases } from "@/utils/mocks/showcases";
 import { designers } from "@/utils/mocks/designers";
 
 const Home = () => {
-    const { showcaseRef, servicesRef, designersRef, packagesRef, contactRef } =
+    const { showcaseRef, servicesRef, designersRef, packsRef, contactRef } =
         useNav();
 
     return (
@@ -108,7 +108,7 @@ const Home = () => {
                         </ul>
                     </div>
                 </Section>
-                <Section ref={packagesRef}>
+                <Section ref={packsRef}>
                     <SectionTitle>Packages.</SectionTitle>
                     <div className="flex flex-col gap-y-4">
                         <p>

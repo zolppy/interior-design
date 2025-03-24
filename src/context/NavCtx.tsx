@@ -16,7 +16,7 @@ interface INavCtx {
     showcaseRef: RefObject<HTMLElement | undefined>;
     servicesRef: RefObject<HTMLElement | undefined>;
     designersRef: RefObject<HTMLElement | undefined>;
-    packagesRef: RefObject<HTMLElement | undefined>;
+    packsRef: RefObject<HTMLElement | undefined>;
     contactRef: RefObject<HTMLElement | undefined>;
     scrollTo: (to: SectionType) => void;
 }
@@ -27,7 +27,7 @@ const NavProvider = ({ children }: { children: ReactNode }) => {
     const showcaseRef = useRef<HTMLElement | undefined>(undefined);
     const servicesRef = useRef<HTMLElement | undefined>(undefined);
     const designersRef = useRef<HTMLElement | undefined>(undefined);
-    const packagesRef = useRef<HTMLElement | undefined>(undefined);
+    const packsRef = useRef<HTMLElement | undefined>(undefined);
     const contactRef = useRef<HTMLElement | undefined>(undefined);
     const [width, setWidth] = useState<number>(0);
 
@@ -88,7 +88,7 @@ const NavProvider = ({ children }: { children: ReactNode }) => {
                 window.scroll(setScrollSettings(designersTop));
                 break;
             case SectionEnum.Packages:
-                const packsTop = calculateElTop(packagesRef);
+                const packsTop = calculateElTop(packsRef);
                 window.scroll(setScrollSettings(packsTop));
                 break;
             case SectionEnum.Contact:
@@ -103,7 +103,7 @@ const NavProvider = ({ children }: { children: ReactNode }) => {
                 showcaseRef,
                 servicesRef,
                 designersRef,
-                packagesRef,
+                packsRef,
                 contactRef,
                 scrollTo,
             }}
