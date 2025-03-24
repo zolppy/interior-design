@@ -1,4 +1,4 @@
-# Diretórios de build e cache
+# Build and cache directories
 .next
 node_modules
 .pnpm-debug.log
@@ -8,17 +8,17 @@ node_modules
 .pnp.cjs
 .pnp.loader.mjs
 
-# Arquivos de ambiente locais (sensíveis)
+# Local environment files (sensitive)
 .env
 .env.local
 .env.*.local
 
-# Configurações específicas de editores de código
+# Code editor-specific configurations
 .vscode/
 .idea/
 *.code-workspace
 
-# Logs e arquivos temporários
+# Logs and temporary files
 logs
 *.log
 npm-debug.log*
@@ -26,22 +26,22 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Configurações do sistema operacional
+# Operating system settings
 .DS_Store
 Thumbs.db
 
-# Arquivos gerados pelo sistema
+# System-generated files
 *.swp
 *.swo
 *.tmp
 *.bak
 *.pid
 
-# Outras pastas/arquivos específicos
+# Other specific folders/files
 coverage/
 dist/
 build/
 *.out
 
-# Ignorar imagens e dados locais, se existirem
+# Ignore local images and data if present
 public/uploads/
