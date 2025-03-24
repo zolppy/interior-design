@@ -8,7 +8,7 @@ const Case = ({ title, alt, path }: Omit<ImgInterface, "id">) => {
                 src={path}
                 title={title}
                 alt={alt}
-                className="min-w-[320px] w-[100%] max-w-[480px] opacity-80"
+                className="min-w-[320px] w-[100%] max-w-[480px] opacity-80 lg:max-w-none"
             />
         </li>
     );

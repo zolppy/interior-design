@@ -117,7 +117,7 @@ const Home = () => {
                             labore et dolore magna aliqua. Ut enim ad minim
                             veniam, quis nostrud exercitation ullamco laboris
                             nisi ut aliquip ex ea commodo consequat. Duis aute
-                            irure
+                            irure.
                         </p>
                         <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
                             <Package>
