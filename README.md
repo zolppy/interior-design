@@ -35,6 +35,11 @@ You can access the page <a href="https://interior-design-vii.vercel.app/">here</
 
 ## Screenshots
 
+![1](https://github.com/user-attachments/assets/fd24e8fa-4353-4bd1-8030-9ce4f29c604a)
+![2](https://github.com/user-attachments/assets/8c520b6d-0d62-400e-a1d4-f5a6a9b83333)
+![3](https://github.com/user-attachments/assets/2e027c51-77e3-4c8e-80d6-77db8c0ed81f)
+![4](https://github.com/user-attachments/assets/598d16d5-ea24-411a-9a00-7787cbb1ce5e)
+
 ## Credits
 
 The page **design** was inspired by <a href="https://www.w3schools.com/w3css/w3css_templates.asp">W3Schools</a>.
