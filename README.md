@@ -11,7 +11,7 @@
 ![Status](https://img.shields.io/badge/STATUS-FINISHED-green)
 ![License](https://img.shields.io/badge/LICENSE-MIT-yellow)
 
-Landing page for a fashion blog, developed with Next.js and Tailwind CSS.
+Landing page for interior design projects, developed with Next.js and Tailwind CSS.
 
 ## Features
 
