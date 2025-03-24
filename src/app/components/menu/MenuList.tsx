@@ -1,15 +1,48 @@
 import MenuItem from "@/app/components/menu/MenuItem";
-import { Section } from "@/utils/enums/section";
+import { useNav } from "@/context/NavCtx";
+import { Section as SectionEnum } from "@/utils/enums/section";
 
 const MenuList = () => {
+    const { actualSection } = useNav();
+
     return (
         <ul>
-            <MenuItem to={Section.Home}>Home</MenuItem>
-            <MenuItem to={Section.Showcase}>Showcase</MenuItem>
-            <MenuItem to={Section.Services}>Services</MenuItem>
-            <MenuItem to={Section.Designers}>Designers</MenuItem>
-            <MenuItem to={Section.Packages}>Packages</MenuItem>
-            <MenuItem to={Section.Contact}>Contact</MenuItem>
+            <MenuItem
+                to={SectionEnum.Home}
+                selected={actualSection === SectionEnum.Home}
+            >
+                Home
+            </MenuItem>
+            <MenuItem
+                to={SectionEnum.Showcase}
+                selected={actualSection === SectionEnum.Showcase}
+            >
+                Showcase
+            </MenuItem>
+            <MenuItem
+                to={SectionEnum.Services}
+                selected={actualSection === SectionEnum.Services}
+            >
+                Services
+            </MenuItem>
+            <MenuItem
+                to={SectionEnum.Designers}
+                selected={actualSection === SectionEnum.Designers}
+            >
+                Designers
+            </MenuItem>
+            <MenuItem
+                to={SectionEnum.Packages}
+                selected={actualSection === SectionEnum.Packages}
+            >
+                Packages
+            </MenuItem>
+            <MenuItem
+                to={SectionEnum.Contact}
+                selected={actualSection === SectionEnum.Contact}
+            >
+                Contact
+            </MenuItem>
         </ul>
     );
 };

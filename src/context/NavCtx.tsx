@@ -19,11 +19,15 @@ interface INavCtx {
     packsRef: RefObject<HTMLElement | undefined>;
     contactRef: RefObject<HTMLElement | undefined>;
     scrollTo: (to: SectionType) => void;
+    actualSection: SectionType;
 }
 
 const NavCtx = createContext<INavCtx | undefined>(undefined);
 
 const NavProvider = ({ children }: { children: ReactNode }) => {
+    const [actualSection, setActualSection] = useState<SectionType>(
+        SectionEnum.Home
+    );
     const showcaseRef = useRef<HTMLElement | undefined>(undefined);
     const servicesRef = useRef<HTMLElement | undefined>(undefined);
     const designersRef = useRef<HTMLElement | undefined>(undefined);
@@ -37,12 +41,55 @@ const NavProvider = ({ children }: { children: ReactNode }) => {
             setWidth(screenWidth);
         };
 
+        const checkAtualSection = () => {
+            let actualSection = SectionEnum.Home;
+            const actualScrollY = window.scrollY;
+
+            const homeTop = 0;
+            const showcaseTop = calculateElTop(showcaseRef);
+            const servicesTop = calculateElTop(servicesRef);
+            const designersTop = calculateElTop(designersRef);
+            const packsTop = calculateElTop(packsRef);
+            const contactTop = calculateElTop(contactRef);
+
+            if (actualScrollY >= homeTop && actualScrollY < showcaseTop) {
+                actualSection = SectionEnum.Home;
+            } else if (
+                actualScrollY >= showcaseTop &&
+                actualScrollY < servicesTop
+            ) {
+                actualSection = SectionEnum.Showcase;
+            } else if (
+                actualScrollY >= servicesTop &&
+                actualScrollY < designersTop
+            ) {
+                actualSection = SectionEnum.Services;
+            } else if (
+                actualScrollY >= designersTop &&
+                actualScrollY < packsTop
+            ) {
+                actualSection = SectionEnum.Designers;
+            } else if (
+                actualScrollY >= packsTop &&
+                actualScrollY < contactTop
+            ) {
+                actualSection = SectionEnum.Packages;
+            } else {
+                actualSection = SectionEnum.Contact;
+            }
+
+            setActualSection(actualSection);
+        };
+
         checkScreenWidth();
+        checkAtualSection();
 
         window.addEventListener("resize", checkScreenWidth);
+        window.addEventListener("scroll", checkAtualSection);
 
         return () => {
             window.removeEventListener("resize", checkScreenWidth);
+            window.removeEventListener("scroll", checkAtualSection);
         };
     }, []);
 
@@ -106,6 +153,7 @@ const NavProvider = ({ children }: { children: ReactNode }) => {
                 packsRef,
                 contactRef,
                 scrollTo,
+                actualSection,
             }}
         >
             {children}
