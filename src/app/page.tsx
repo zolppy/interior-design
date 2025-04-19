@@ -17,6 +17,7 @@ import FormButton from "@/app/components/form/FormBtn";
 import Menu from "@/app/components/menu/Menu";
 import MenuDesktop from "./components/menu/MenuDesktop";
 import Footer from "@/app/components/Footer";
+import CoffeeBtn from "@/app/components/CoffeeBtn";
 import { useNav } from "@/context/NavCtx";
 import { showcases } from "@/utils/mocks/showcases";
 import { designers } from "@/utils/mocks/designers";
@@ -220,6 +221,7 @@ const Home = () => {
                         </form>
                     </div>
                 </Section>
+                <CoffeeBtn />
             </main>
             <Footer />
         </>
