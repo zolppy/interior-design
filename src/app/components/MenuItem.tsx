@@ -21,7 +21,7 @@ export const MenuItem = ({ children, to, selected }: IMenuItem) => {
                 } as React.CSSProperties
             }
             onClick={() => (scrollTo(to), closeMenu())}
-            className="bg-[var(--bg-color)] text-[var(--text-color)] text-[18px] p-2 active:bg-[#f1f1f1] active:text-black lg:hover:bg-[#f1f1f1] lg:hover:text-black lg:hover:cursor-pointer"
+            className="bg-[var(--bg-color)] text-[var(--text-color)] text-[18px] p-2 active:bg-[#f1f1f1] active:text-black lg:hover:bg-[#f1f1f1] lg:hover:text-black lg:hover:cursor-pointer transition-colors duration-200"
         >
             <span className="whitespace-nowrap">{children}</span>
         </li>
