@@ -1,9 +1,11 @@
+import { ReactNode } from "react";
+
 interface IPackTitle {
-    children: React.ReactNode;
+    children: ReactNode;
     bgColor: string;
 }
 
-const PackTitle = ({ children, bgColor }: IPackTitle) => {
+export const PackTitle = ({ children, bgColor }: IPackTitle) => {
     return (
         <div
             style={{ backgroundColor: bgColor }}
@@ -15,5 +17,3 @@ const PackTitle = ({ children, bgColor }: IPackTitle) => {
 };
 
 PackTitle.displayName = "PackTitle";
-
-export default PackTitle;

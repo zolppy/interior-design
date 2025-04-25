@@ -1,17 +1,18 @@
 import { BsCupHotFill } from "react-icons/bs";
 
-const CoffeeBtn = () => {
+export const CoffeeBtn = () => {
     return (
-        <a
-            target="_blank"
-            href="https://ko-fi.com/zolppy"
-            className="fixed -translate-y-1/2 -translate-x-1/2 bg-[#f44336] text-4xl p-3 rounded-full right-0 bottom-0 active:bg-black lg:hover:cursor-pointer lg:hover:bg-black text-white"
-        >
-            <BsCupHotFill />
-        </a>
+        <button>
+            <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://ko-fi.com/zolppy"
+                className="fixed -translate-y-1/2 -translate-x-1/2 bg-[#f44336] text-4xl p-3 rounded-full right-0 bottom-0 active:bg-[#ccc] active:text-black lg:hover:cursor-pointer lg:hover:bg-[#ccc] lg:hover:text-black text-white transition-colors duration-200"
+            >
+                <BsCupHotFill />
+            </a>
+        </button>
     );
 };
 
 CoffeeBtn.displayName = "CoffeeBtn";
-
-export default CoffeeBtn;

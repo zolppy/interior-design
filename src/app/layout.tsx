@@ -3,7 +3,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { MenuProvider } from "@/context/MenuCtx";
 import { NavProvider } from "@/context/NavCtx";
 import { poppins } from "@/utils/fonts";
-import "./globals.css";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
     title: "Interior Design",
@@ -35,5 +35,7 @@ const RootLayout = ({
         </html>
     );
 };
+
+RootLayout.displayName = "RootLayout";
 
 export default RootLayout;

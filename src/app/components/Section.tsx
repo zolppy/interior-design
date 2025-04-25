@@ -1,12 +1,11 @@
 import { ReactNode, RefObject } from "react";
 
-const Section = ({
-    children,
-    ref,
-}: {
+interface ISection {
     children: ReactNode;
     ref: RefObject<HTMLElement | undefined>;
-}) => {
+}
+
+export const Section = ({ children, ref }: ISection) => {
     return (
         <section
             ref={ref as RefObject<HTMLElement>}
@@ -18,5 +17,3 @@ const Section = ({
 };
 
 Section.displayName = "Section";
-
-export default Section;

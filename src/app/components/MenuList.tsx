@@ -1,8 +1,10 @@
-import MenuItem from "@/app/components/menu/MenuItem";
+"use client";
+
+import { MenuItem } from "@/app/components/MenuItem";
 import { useNav } from "@/context/NavCtx";
 import { Section as SectionEnum } from "@/utils/enums/section";
 
-const MenuList = () => {
+export const MenuList = () => {
     const { actualSection } = useNav();
 
     return (
@@ -48,5 +50,3 @@ const MenuList = () => {
 };
 
 MenuList.displayName = "MenuList";
-
-export default MenuList;

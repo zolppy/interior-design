@@ -8,7 +8,7 @@ interface IMenuItem {
     selected: boolean;
 }
 
-const MenuItem = ({ children, to, selected }: IMenuItem) => {
+export const MenuItem = ({ children, to, selected }: IMenuItem) => {
     const { scrollTo } = useNav();
     const { closeMenu } = useMenu();
 
@@ -29,5 +29,3 @@ const MenuItem = ({ children, to, selected }: IMenuItem) => {
 };
 
 MenuItem.displayName = "MenuItem";
-
-export default MenuItem;

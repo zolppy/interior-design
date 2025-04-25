@@ -1,7 +1,9 @@
+"use client";
+
 import { BsList } from "react-icons/bs";
 import { useMenu } from "@/context/MenuCtx";
 
-const Header = () => {
+export const Header = () => {
     const { openMenu } = useMenu();
 
     return (
@@ -15,5 +17,3 @@ const Header = () => {
 };
 
 Header.displayName = "Header";
-
-export default Header;

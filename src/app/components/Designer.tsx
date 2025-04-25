@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Designer as DesignerInterface } from "@/utils/types/designer";
 
-const Designer = ({
+export const Designer = ({
     photo,
     name,
     role,
@@ -25,5 +25,3 @@ const Designer = ({
 };
 
 Designer.displayName = "Designer";
-
-export default Designer;

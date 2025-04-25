@@ -3,7 +3,7 @@ interface IPackPrice {
     description: string;
 }
 
-const PackPrice = ({ price, description }: IPackPrice) => {
+export const PackPrice = ({ price, description }: IPackPrice) => {
     return (
         <div className="flex flex-col gap-y-4 p-2">
             <h4 className="text-3xl">$ {price}</h4>
@@ -13,5 +13,3 @@ const PackPrice = ({ price, description }: IPackPrice) => {
 };
 
 PackPrice.displayName = "PackPrice";
-
-export default PackPrice;

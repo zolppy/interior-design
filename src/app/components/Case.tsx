@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Img as ImgInterface } from "@/utils/types/image";
 
-const Case = ({ title, alt, path }: Omit<ImgInterface, "id">) => {
+export const Case = ({ title, alt, path }: Omit<ImgInterface, "id">) => {
     return (
         <li>
             <Image
@@ -15,5 +15,3 @@ const Case = ({ title, alt, path }: Omit<ImgInterface, "id">) => {
 };
 
 Case.displayName = "Case";
-
-export default Case;

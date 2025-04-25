@@ -1,4 +1,4 @@
-const Footer = () => {
+export const Footer = () => {
     return (
         <footer className="text-right bg-[#f1f1f1] py-12 px-14">
             Powered by{" "}
@@ -14,5 +14,3 @@ const Footer = () => {
 };
 
 Footer.displayName = "Footer";
-
-export default Footer;
