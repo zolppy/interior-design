@@ -7,7 +7,7 @@ import { FormInput } from "@/app/components/FormInput";
 import { Button } from "@/app/components/Button";
 import { useNav } from "@/context/NavCtx";
 
-export const ContactSection = () => {
+export function ContactSection() {
     const { contactRef } = useNav();
 
     return (
@@ -55,6 +55,6 @@ export const ContactSection = () => {
             </div>
         </Section>
     );
-};
+}
 
 ContactSection.displayName = "ContactSection";

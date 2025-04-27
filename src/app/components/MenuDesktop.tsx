@@ -5,7 +5,7 @@ import { MenuList } from "@/app/components/MenuList";
 import { useMenu } from "@/context/MenuCtx";
 import { BsX } from "react-icons/bs";
 
-export const MenuDesktop = () => {
+export function MenuDesktop() {
     const { closeMenu } = useMenu();
 
     return (
@@ -19,6 +19,6 @@ export const MenuDesktop = () => {
             <MenuList />
         </nav>
     );
-};
+}
 
 MenuDesktop.displayName = "MenuDesktop";

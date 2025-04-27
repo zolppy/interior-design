@@ -1,31 +1,31 @@
+import { HTMLAttributes, memo } from "react";
 import { useNav } from "@/context/NavCtx";
 import { useMenu } from "@/context/MenuCtx";
-import { Section as SectionType } from "@/utils/types/section";
+import { Section } from "@/utils/enums/section";
+import { ClassNameValue, twMerge } from "tailwind-merge";
 
-interface IMenuItem {
+interface MenuItem extends HTMLAttributes<HTMLLIElement> {
     children: React.ReactNode;
-    to: SectionType;
-    selected: boolean;
+    to: Section;
 }
 
-export const MenuItem = ({ children, to, selected }: IMenuItem) => {
-    const { scrollTo } = useNav();
-    const { closeMenu } = useMenu();
+export const MenuItem = memo(
+    ({ children, to, className = "", ...props }: MenuItem) => {
+        const { scrollTo } = useNav();
+        const { closeMenu } = useMenu();
+        const baseStyles =
+            "text-white text-[18px] p-2 active:bg-[#f1f1f1] active:text-black lg:hover:bg-[#f1f1f1] lg:hover:text-black lg:hover:cursor-pointer transition-colors duration-200";
 
-    return (
-        <li
-            style={
-                {
-                    "--bg-color": selected ? "white" : "inherit",
-                    "--text-color": selected ? "black" : "white",
-                } as React.CSSProperties
-            }
-            onClick={() => (scrollTo(to), closeMenu())}
-            className="bg-[var(--bg-color)] text-[var(--text-color)] text-[18px] p-2 active:bg-[#f1f1f1] active:text-black lg:hover:bg-[#f1f1f1] lg:hover:text-black lg:hover:cursor-pointer transition-colors duration-200"
-        >
-            <span className="whitespace-nowrap">{children}</span>
-        </li>
-    );
-};
+        return (
+            <li
+                {...props}
+                onClick={() => (scrollTo(to), closeMenu())}
+                className={twMerge(baseStyles, className as ClassNameValue)}
+            >
+                <span className="whitespace-nowrap">{children}</span>
+            </li>
+        );
+    }
+);
 
 MenuItem.displayName = "MenuItem";

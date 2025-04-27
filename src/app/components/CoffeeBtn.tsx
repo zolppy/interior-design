@@ -1,6 +1,6 @@
 import { BsCupHotFill } from "react-icons/bs";
 
-export const CoffeeBtn = () => {
+export function CoffeeBtn() {
     return (
         <button>
             <a
@@ -13,6 +13,6 @@ export const CoffeeBtn = () => {
             </a>
         </button>
     );
-};
+}
 
 CoffeeBtn.displayName = "CoffeeBtn";

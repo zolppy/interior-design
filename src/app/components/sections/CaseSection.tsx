@@ -6,7 +6,7 @@ import { Case } from "@/app/components/Case";
 import { useNav } from "@/context/NavCtx";
 import { showcases } from "@/utils/mocks/showcases";
 
-export const CaseSection = () => {
+export function CaseSection() {
     const { showcaseRef } = useNav();
 
     return (
@@ -19,6 +19,6 @@ export const CaseSection = () => {
             </ul>
         </Section>
     );
-};
+}
 
 CaseSection.displayName = "CaseSection";

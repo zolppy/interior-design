@@ -10,7 +10,7 @@ import { PackPrice } from "@/app/components/PackPrice";
 import { Button } from "@/app/components/Button";
 import { useNav } from "@/context/NavCtx";
 
-export const PacksSection = () => {
+export function PacksSection() {
     const { packsRef } = useNav();
 
     return (
@@ -26,7 +26,7 @@ export const PacksSection = () => {
                 </p>
                 <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <Pack>
-                        <PackTitle bgColor="#616161">Basic</PackTitle>
+                        <PackTitle className="bg-[#616161]">Basic</PackTitle>
                         <PackList>
                             <PackItem>Floorplanning</PackItem>
                             <PackItem>10 hours support</PackItem>
@@ -44,7 +44,7 @@ export const PacksSection = () => {
                         </PackList>
                     </Pack>
                     <Pack>
-                        <PackTitle bgColor="#f44336">Pro</PackTitle>
+                        <PackTitle>Pro</PackTitle>
                         <PackList>
                             <PackItem>Floorplanning</PackItem>
                             <PackItem>50 hours support</PackItem>
@@ -65,6 +65,6 @@ export const PacksSection = () => {
             </div>
         </Section>
     );
-};
+}
 
 PacksSection.displayName = "PacksSection";

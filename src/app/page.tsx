@@ -10,7 +10,7 @@ import { PacksSection } from "@/app/components/sections/PacksSection";
 import { ContactSection } from "@/app/components/sections/ContactSection";
 import { Main } from "@/app/components/Main";
 
-const Home = () => {
+export default function Home() {
     return (
         <>
             <Header />
@@ -30,6 +30,4 @@ const Home = () => {
             <Footer />
         </>
     );
-};
-
-export default Home;
+}

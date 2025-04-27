@@ -4,7 +4,7 @@ import { Section } from "@/app/components/Section";
 import { SectionTitle } from "@/app/components/SectionTitle";
 import { useNav } from "@/context/NavCtx";
 
-export const ServicesSection = () => {
+export function ServicesSection() {
     const { servicesRef } = useNav();
 
     return (
@@ -32,6 +32,6 @@ export const ServicesSection = () => {
             </div>
         </Section>
     );
-};
+}
 
 ServicesSection.displayName = "ServicesSection";

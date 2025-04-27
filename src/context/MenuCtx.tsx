@@ -2,38 +2,42 @@
 
 import { createContext, useContext, useState, ReactNode } from "react";
 
-interface IMenuCtx {
+interface MenuContextValue {
     menuIsOpen: boolean;
     openMenu: () => void;
     closeMenu: () => void;
 }
 
-const MenuCtx = createContext<IMenuCtx | undefined>(undefined);
+const MenuContext = createContext<MenuContextValue | null>(null);
 
-const MenuProvider = ({ children }: { children: ReactNode }) => {
-    const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
+interface MenuProviderProps {
+    children: ReactNode;
+}
 
-    const openMenu = () => {
-        setMenuIsOpen(true);
-    };
-
-    const closeMenu = () => {
-        setMenuIsOpen(false);
-    };
+function MenuProvider({ children }: MenuProviderProps) {
+    const [menuIsOpen, menuSetIsOpen] = useState(false);
 
     return (
-        <MenuCtx.Provider value={{ menuIsOpen, openMenu, closeMenu }}>
+        <MenuContext.Provider
+            value={{
+                menuIsOpen,
+                openMenu: () => menuSetIsOpen(true),
+                closeMenu: () => menuSetIsOpen(false),
+            }}
+        >
             {children}
-        </MenuCtx.Provider>
+        </MenuContext.Provider>
     );
-};
+}
 
-const useMenu = (): IMenuCtx => {
-    const context = useContext<IMenuCtx | undefined>(MenuCtx);
+function useMenu() {
+    const context = useContext(MenuContext);
+
     if (!context) {
-        throw new Error("useMenu must be used inside a MenuProvider");
+        throw new Error("useMenu must be used within a MenuProvider");
     }
+
     return context;
-};
+}
 
 export { MenuProvider, useMenu };

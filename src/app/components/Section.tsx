@@ -5,7 +5,7 @@ interface ISection {
     ref: RefObject<HTMLElement | undefined>;
 }
 
-export const Section = ({ children, ref }: ISection) => {
+export function Section({ children, ref }: ISection) {
     return (
         <section
             ref={ref as RefObject<HTMLElement>}
@@ -14,6 +14,6 @@ export const Section = ({ children, ref }: ISection) => {
             {children}
         </section>
     );
-};
+}
 
 Section.displayName = "Section";

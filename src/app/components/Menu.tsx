@@ -6,7 +6,7 @@ import { MenuList } from "@/app/components/MenuList";
 import { useMenu } from "@/context/MenuCtx";
 import { BsX } from "react-icons/bs";
 
-export const Menu = () => {
+export function Menu() {
     const { closeMenu, menuIsOpen } = useMenu();
 
     return (
@@ -41,6 +41,6 @@ export const Menu = () => {
             )}
         </AnimatePresence>
     );
-};
+}
 
 Menu.displayName = "Menu";

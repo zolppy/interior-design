@@ -32,7 +32,7 @@ const sectionOrder: Section[] = [
     Section.Contact,
 ];
 
-const NavProvider = ({ children }: { children: ReactNode }) => {
+function NavProvider({ children }: { children: ReactNode }) {
     const [actualSection, setActualSection] = useState<Section>(Section.Home);
     const [width, setWidth] = useState(0);
 
@@ -50,55 +50,63 @@ const NavProvider = ({ children }: { children: ReactNode }) => {
         [Section.Contact]: contactRef,
     };
 
-    const calculateElTop = (section: Section): number => {
+    function calculateElTop(section: Section): number {
         if (section === Section.Home) return 0;
 
         const ref = sectionRefs[section];
         const offsetTop = ref.current?.offsetTop || 0;
         return width >= 1024 ? offsetTop : offsetTop - 69;
-    };
+    }
 
-    const getScrollOptions = (top = 0): ScrollToOptions => ({
-        top,
-        behavior: "smooth",
-    });
+    function getScrollOptions(top = 0): ScrollToOptions {
+        return {
+            top,
+            behavior: "smooth",
+        };
+    }
 
-    const scrollTo = (to: Section) => {
+    function scrollTo(to: Section) {
         window.scrollTo(getScrollOptions(calculateElTop(to)));
-    };
+    }
 
-    useEffect(() => {
-        const handleResize = () => setWidth(window.innerWidth);
-
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
-            const thresholds = sectionOrder.map(calculateElTop);
-
-            let newSection = Section.Home;
-            for (let i = 0; i < thresholds.length; i++) {
-                if (
-                    scrollY >= thresholds[i] &&
-                    (i === thresholds.length - 1 || scrollY < thresholds[i + 1])
-                ) {
-                    newSection = sectionOrder[i];
-                    break;
-                }
+    useEffect(
+        function setupListeners() {
+            function handleResize() {
+                setWidth(window.innerWidth);
             }
 
-            setActualSection(newSection);
-        };
+            function handleScroll() {
+                const scrollY = window.scrollY;
+                const thresholds = sectionOrder.map(calculateElTop);
 
-        handleResize();
-        handleScroll();
+                let newSection = Section.Home;
+                for (let i = 0; i < thresholds.length; i++) {
+                    if (
+                        scrollY >= thresholds[i] &&
+                        (i === thresholds.length - 1 ||
+                            scrollY < thresholds[i + 1])
+                    ) {
+                        newSection = sectionOrder[i];
+                        break;
+                    }
+                }
 
-        window.addEventListener("resize", handleResize);
-        window.addEventListener("scroll", handleScroll);
+                setActualSection(newSection);
+            }
 
-        return () => {
-            window.removeEventListener("resize", handleResize);
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, [width]);
+            handleResize();
+            handleScroll();
+
+            window.addEventListener("resize", handleResize);
+            window.addEventListener("scroll", handleScroll);
+
+            return function cleanupListeners() {
+                window.removeEventListener("resize", handleResize);
+                window.removeEventListener("scroll", handleScroll);
+            };
+        },
+        [width]
+    );
 
     return (
         <NavCtx.Provider
@@ -115,12 +123,12 @@ const NavProvider = ({ children }: { children: ReactNode }) => {
             {children}
         </NavCtx.Provider>
     );
-};
+}
 
-const useNav = (): INavCtx => {
+function useNav(): INavCtx {
     const context = useContext(NavCtx);
     if (!context) throw new Error("useNav must be used within NavProvider");
     return context;
-};
+}
 
 export { NavProvider, useNav };

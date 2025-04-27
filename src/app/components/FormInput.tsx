@@ -8,14 +8,14 @@ interface IFormInput extends HTMLAttributes<HTMLInputElement> {
     placeholder: string;
 }
 
-export const FormInput = ({
+export function FormInput({
     id,
     type = "text",
     required,
     placeholder,
     className = "",
     ...props
-}: IFormInput) => {
+}: IFormInput) {
     const baseStyles = "border border-neutral-300 p-2";
 
     return (
@@ -28,6 +28,6 @@ export const FormInput = ({
             className={twMerge(baseStyles, className as ClassNameValue)}
         />
     );
-};
+}
 
 FormInput.displayName = "FormInput";

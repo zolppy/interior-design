@@ -3,7 +3,7 @@
 import { BsList } from "react-icons/bs";
 import { useMenu } from "@/context/MenuCtx";
 
-export const Header = () => {
+export function Header() {
     const { openMenu } = useMenu();
 
     return (
@@ -14,6 +14,6 @@ export const Header = () => {
             <h1 className="text-white text-2xl">Company Name</h1>
         </header>
     );
-};
+}
 
 Header.displayName = "Header";

@@ -6,7 +6,7 @@ import { Designer } from "@/app/components/Designer";
 import { useNav } from "@/context/NavCtx";
 import { designers } from "@/utils/mocks/designers";
 
-export const DesignersSection = () => {
+export function DesignersSection() {
     const { designersRef } = useNav();
 
     return (
@@ -44,6 +44,6 @@ export const DesignersSection = () => {
             </div>
         </Section>
     );
-};
+}
 
 DesignersSection.displayName = "DesignersSection";

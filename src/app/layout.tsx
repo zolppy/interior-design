@@ -17,11 +17,11 @@ export const metadata: Metadata = {
     ],
 };
 
-const RootLayout = ({
+export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
-}>) => {
+}>) {
     return (
         <html lang="en">
             <MenuProvider>
@@ -34,8 +34,6 @@ const RootLayout = ({
             <GoogleAnalytics gaId="G-C2VWGZBK20" />
         </html>
     );
-};
+}
 
 RootLayout.displayName = "RootLayout";
-
-export default RootLayout;
