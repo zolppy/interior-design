@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 
-interface IPackItem {
+interface PackItem {
     children: ReactNode;
 }
 
-export function PackItem({ children }: IPackItem) {
+export function PackItem({ children }: PackItem) {
     return <li className="p-4 text-center">{children}</li>;
 }
 

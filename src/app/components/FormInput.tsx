@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
 import { ClassNameValue, twMerge } from "tailwind-merge";
 
-interface IFormInput extends HTMLAttributes<HTMLInputElement> {
+interface FormInput extends HTMLAttributes<HTMLInputElement> {
     id: string;
     type?: "text" | "date" | "datetime" | "email" | "tel";
     required: boolean;
@@ -15,7 +15,7 @@ export function FormInput({
     placeholder,
     className = "",
     ...props
-}: IFormInput) {
+}: FormInput) {
     const baseStyles = "border border-neutral-300 p-2";
 
     return (
