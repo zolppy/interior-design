@@ -1,7 +1,6 @@
 "use client";
 
-import { Section as SectionEnum } from "@/utils/enums/section";
-import type { Section as SectionType } from "@/utils/types/section";
+import { Section } from "@/utils/enums/section";
 import {
     createContext,
     useContext,
@@ -18,131 +17,88 @@ interface INavCtx {
     designersRef: RefObject<HTMLElement | undefined>;
     packsRef: RefObject<HTMLElement | undefined>;
     contactRef: RefObject<HTMLElement | undefined>;
-    scrollTo: (to: SectionType) => void;
-    actualSection: SectionType;
+    scrollTo: (to: Section) => void;
+    actualSection: Section;
 }
 
 const NavCtx = createContext<INavCtx | undefined>(undefined);
 
+const sectionOrder: Section[] = [
+    Section.Home,
+    Section.Showcase,
+    Section.Services,
+    Section.Designers,
+    Section.Packages,
+    Section.Contact,
+];
+
 const NavProvider = ({ children }: { children: ReactNode }) => {
-    const [actualSection, setActualSection] = useState<SectionType>(
-        SectionEnum.Home
-    );
+    const [actualSection, setActualSection] = useState<Section>(Section.Home);
+    const [width, setWidth] = useState(0);
+
     const showcaseRef = useRef<HTMLElement | undefined>(undefined);
     const servicesRef = useRef<HTMLElement | undefined>(undefined);
     const designersRef = useRef<HTMLElement | undefined>(undefined);
     const packsRef = useRef<HTMLElement | undefined>(undefined);
     const contactRef = useRef<HTMLElement | undefined>(undefined);
-    const [width, setWidth] = useState<number>(0);
+
+    const sectionRefs = {
+        [Section.Showcase]: showcaseRef,
+        [Section.Services]: servicesRef,
+        [Section.Designers]: designersRef,
+        [Section.Packages]: packsRef,
+        [Section.Contact]: contactRef,
+    };
+
+    const calculateElTop = (section: Section): number => {
+        if (section === Section.Home) return 0;
+
+        const ref = sectionRefs[section];
+        const offsetTop = ref.current?.offsetTop || 0;
+        return width >= 1024 ? offsetTop : offsetTop - 69;
+    };
+
+    const getScrollOptions = (top = 0): ScrollToOptions => ({
+        top,
+        behavior: "smooth",
+    });
+
+    const scrollTo = (to: Section) => {
+        window.scrollTo(getScrollOptions(calculateElTop(to)));
+    };
 
     useEffect(() => {
-        const checkScreenWidth = () => {
-            const screenWidth = window.innerWidth;
-            setWidth(screenWidth);
-        };
+        const handleResize = () => setWidth(window.innerWidth);
 
-        const checkAtualSection = () => {
-            let actualSection = SectionEnum.Home;
-            const actualScrollY = window.scrollY;
+        const handleScroll = () => {
+            const scrollY = window.scrollY;
+            const thresholds = sectionOrder.map(calculateElTop);
 
-            const homeTop = 0;
-            const showcaseTop = calculateElTop(showcaseRef);
-            const servicesTop = calculateElTop(servicesRef);
-            const designersTop = calculateElTop(designersRef);
-            const packsTop = calculateElTop(packsRef);
-            const contactTop = calculateElTop(contactRef);
-
-            if (actualScrollY >= homeTop && actualScrollY < showcaseTop) {
-                actualSection = SectionEnum.Home;
-            } else if (
-                actualScrollY >= showcaseTop &&
-                actualScrollY < servicesTop
-            ) {
-                actualSection = SectionEnum.Showcase;
-            } else if (
-                actualScrollY >= servicesTop &&
-                actualScrollY < designersTop
-            ) {
-                actualSection = SectionEnum.Services;
-            } else if (
-                actualScrollY >= designersTop &&
-                actualScrollY < packsTop
-            ) {
-                actualSection = SectionEnum.Designers;
-            } else if (
-                actualScrollY >= packsTop &&
-                actualScrollY < contactTop
-            ) {
-                actualSection = SectionEnum.Packages;
-            } else {
-                actualSection = SectionEnum.Contact;
+            let newSection = Section.Home;
+            for (let i = 0; i < thresholds.length; i++) {
+                if (
+                    scrollY >= thresholds[i] &&
+                    (i === thresholds.length - 1 || scrollY < thresholds[i + 1])
+                ) {
+                    newSection = sectionOrder[i];
+                    break;
+                }
             }
 
-            setActualSection(actualSection);
+            setActualSection(newSection);
         };
 
-        checkScreenWidth();
-        checkAtualSection();
+        handleResize();
+        handleScroll();
 
-        window.addEventListener("resize", checkScreenWidth);
-        window.addEventListener("scroll", checkAtualSection);
+        window.addEventListener("resize", handleResize);
+        window.addEventListener("scroll", handleScroll);
 
         return () => {
-            window.removeEventListener("resize", checkScreenWidth);
-            window.removeEventListener("scroll", checkAtualSection);
+            window.removeEventListener("resize", handleResize);
+            window.removeEventListener("scroll", handleScroll);
         };
-    }, []);
-
-    const calculateElTop = (
-        ref: RefObject<HTMLElement | undefined>
-    ): number => {
-        const el = ref.current;
-        const OffsetTop = el?.offsetTop || 0;
-        // 69 is the header height
-        // 1024 is the Tailwind CSS size for large screens
-        const top = width >= 1024 ? OffsetTop : OffsetTop - 69;
-
-        return top;
-    };
-
-    const setScrollSettings = (
-        top: number = 0,
-        left: number = 0,
-        behavior: ScrollBehavior = "smooth"
-    ) => {
-        return {
-            top: top,
-            left: left,
-            behavior: behavior,
-        };
-    };
-
-    const scrollTo = (to: SectionType) => {
-        switch (to) {
-            case SectionEnum.Home:
-                window.scroll(setScrollSettings());
-                break;
-            case SectionEnum.Showcase:
-                const showcaseTop = calculateElTop(showcaseRef);
-                window.scroll(setScrollSettings(showcaseTop));
-                break;
-            case SectionEnum.Services:
-                const servicesTop = calculateElTop(servicesRef);
-                window.scroll(setScrollSettings(servicesTop));
-                break;
-            case SectionEnum.Designers:
-                const designersTop = calculateElTop(designersRef);
-                window.scroll(setScrollSettings(designersTop));
-                break;
-            case SectionEnum.Packages:
-                const packsTop = calculateElTop(packsRef);
-                window.scroll(setScrollSettings(packsTop));
-                break;
-            case SectionEnum.Contact:
-                const contactTop = calculateElTop(contactRef);
-                window.scroll(setScrollSettings(contactTop));
-        }
-    };
+    }, [width]);
 
     return (
         <NavCtx.Provider
@@ -162,10 +118,8 @@ const NavProvider = ({ children }: { children: ReactNode }) => {
 };
 
 const useNav = (): INavCtx => {
-    const context = useContext<INavCtx | undefined>(NavCtx);
-    if (!context) {
-        throw new Error("useNav must be used inside a NavProvider");
-    }
+    const context = useContext(NavCtx);
+    if (!context) throw new Error("useNav must be used within NavProvider");
     return context;
 };
 
