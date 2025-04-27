@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { Designer as DesignerType } from "@/utils/types/designer";
 
 export const Designer = memo(
-    ({ photo, name, role, description }: Omit<DesignerType, "id">) => {
+    ({ photo, name, role, description }: DesignerType) => {
         return (
             <li className="bg-[#f1f1f1] min-w-[320px] w-[100%] max-w-[480px] md:min-w-[200px] lg:max-w-none">
                 <Image

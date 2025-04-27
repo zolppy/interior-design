@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 
-interface ISectionTitle {
+interface SectionTitle {
     children: ReactNode;
 }
 
-export function SectionTitle({ children }: ISectionTitle) {
+export function SectionTitle({ children }: SectionTitle) {
     return (
         <div className="flex flex-col gap-y-8">
             <h2 className="font-medium text-5xl text-[#f44336]">{children}</h2>

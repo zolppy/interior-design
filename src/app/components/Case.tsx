@@ -1,8 +1,8 @@
 import { memo } from "react";
 import Image from "next/image";
-import type { Img } from "@/utils/types/image";
+import type { Img } from "@/utils/types/img";
 
-export const Case = memo(({ title, alt, path }: Omit<Img, "id">) => {
+export const Case = memo(({ title, alt, path }: Img) => {
     return (
         <li>
             <Image

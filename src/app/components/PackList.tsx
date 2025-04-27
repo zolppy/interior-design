@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 
-interface IPackList {
+interface PackList {
     children: ReactNode;
 }
 
-export function PackList({ children }: IPackList) {
+export function PackList({ children }: PackList) {
     return <ul className="divide-y divide-[#ddd]">{children}</ul>;
 }
 

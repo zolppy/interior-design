@@ -1,8 +1,8 @@
-import type { Img as ImgInterface } from "@/utils/types/image";
+import type { Img } from "@/utils/types/img";
 
 interface Designer {
-    id: string;
-    photo: ImgInterface;
+    id?: string;
+    photo: Img;
     name: string;
     role: string;
     description: string;

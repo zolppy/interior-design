@@ -1,11 +1,11 @@
 import { ReactNode, RefObject } from "react";
 
-interface ISection {
+interface Section {
     children: ReactNode;
     ref: RefObject<HTMLElement | undefined>;
 }
 
-export function Section({ children, ref }: ISection) {
+export function Section({ children, ref }: Section) {
     return (
         <section
             ref={ref as RefObject<HTMLElement>}
