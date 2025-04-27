@@ -1,23 +1,33 @@
 # Fashion Blog
 
-![Next](https://img.shields.io/badge/NEXT-15.2.2-purple)
-![React](https://img.shields.io/badge/React-19.0.0-blue)
-![React Icons](<https://img.shields.io/badge/React Icons-5.5.0-violet>)
-![Tailwind CSS](<https://img.shields.io/badge/TAILWIND CSS-4.0.0-indigo>)
-![TypeScript](https://img.shields.io/badge/TYPESCRIPT-5.0.0-red)
-![Framer Motion](<https://img.shields.io/badge/FRAMER MOTION-12.5.0-pink>)
-![Docker](https://img.shields.io/badge/DOCKER-28.0.2-cyan)
-![Docker](https://img.shields.io/badge/UUID-11.1.0-orange)
+![Next](https://img.shields.io/badge/NEXT-15.2.2-red)
+![React](https://img.shields.io/badge/REACT-19.0.0-indigo)
+![React Icons](<https://img.shields.io/badge/REACT ICONS-5.5.0-blue>)
+![Framer Motion](<https://img.shields.io/badge/FRAMER MOTION-12.5.0-black>)
+![Tailwind CSS](<https://img.shields.io/badge/TAILWIND CSS-4.0.0-white>)
+![TypeScript](https://img.shields.io/badge/TYPESCRIPT-5.0.0-brown)
+![Tailwind Merge](<https://img.shields.io/badge/TAILWIND MERGE-3.2.0-pink>)
+![UUID](https://img.shields.io/badge/UUID-11.1.0-cyan)
+![CLSX](https://img.shields.io/badge/CLSX-2.1.1-magenta)
 ![Status](https://img.shields.io/badge/STATUS-FINISHED-green)
 ![License](https://img.shields.io/badge/LICENSE-MIT-yellow)
 
-Landing page for interior design projects, developed with Next.js and Tailwind CSS.
+The best interior design projects, created by highly qualified professionals. Come and check out our success stories and place your order now.
 
 ## Features
 
--   Responsive design;
--   Sidebar
--   Navigation
+- Responsive design;
+- Consistent design
+- Order formularies;
+- Buy me a coffee button;
+- Navbar;
+- Navigation;
+- Home section;
+- Showcase section;
+- Services section;
+- Designers section;
+- Packages section;
+- Contact section.
 
 ## Technologies
 
@@ -32,6 +42,31 @@ Landing page for interior design projects, developed with Next.js and Tailwind C
 ## Demo
 
 You can access the page <a href="https://interior-design-vii.vercel.app/">here</a>.
+
+## How to run
+
+### By docker
+
+Run the following command on a console:
+
+```bash
+docker compose up -d
+```
+
+After some time, open `http://localhost:3002` on a browser tab.
+
+### By npm/yarn
+
+Run the following commands on a console:
+
+```bash
+git clone git@github.com:zolppy/interior-design.git
+cd interior-design
+npm install # or "yarn"
+npm run dev # or "yarn run dev"
+```
+
+After that, open `http://localhost:3002` on a browser tab.
 
 ## Screenshots
 
