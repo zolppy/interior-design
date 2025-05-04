@@ -15,6 +15,7 @@ export const Button = memo(
         return (
             <button
                 {...props}
+                type={type}
                 className={twMerge(baseStyles, className as ClassNameValue)}
             >
                 {children}
