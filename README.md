@@ -79,4 +79,4 @@ After that, open `http://localhost:3002` on a browser tab.
 
 ## Credits
 
-The page **design** was inspired by <a href="https://www.w3schools.com/w3css/w3css_templates.asp">W3Schools</a>.
+The page **design** was **inspired** by <a href="https://www.w3schools.com/w3css/w3css_templates.asp">W3Schools</a>.
