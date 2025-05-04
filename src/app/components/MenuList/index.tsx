@@ -1,9 +1,9 @@
 "use client";
 
-import { clsx } from "clsx";
 import { MenuItem } from "@/app/components/MenuItem";
 import { useNav } from "@/context/NavCtx";
 import { Section as SectionEnum } from "@/utils/enums/section";
+import { clsx } from "clsx";
 
 export function MenuList() {
     const { actualSection } = useNav();

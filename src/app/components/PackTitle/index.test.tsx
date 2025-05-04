@@ -12,10 +12,11 @@ describe("PackTitle Componet", function () {
 
     // Test Tailwind class merging
     it("should merge base styles with custom classes", function () {
-        const customClass = "bg-black";
-        render(<PackTitle className={customClass}>Some text</PackTitle>);
+        const customClass = "font-bold";
+        const text = "Some text";
+        render(<PackTitle className={customClass}>{text}</PackTitle>);
 
-        const packTitle = screen.getByRole("h3");
+        const packTitle = screen.getByText(text);
 
         // Base styles verification
         const baseStyles = [
@@ -37,7 +38,8 @@ describe("PackTitle Componet", function () {
 
     // Test additional HTML attributes
     it("should pass through other HTML attributes", function () {
-        render(<PackTitle lang="pt-br">Click me</PackTitle>);
-        expect(screen.getByRole("button")).toHaveAttribute("lang", "pt-br");
+        const text = "Some text";
+        render(<PackTitle lang="pt-br">{text}</PackTitle>);
+        expect(screen.getByText(text)).toHaveAttribute("lang", "pt-br");
     });
 });
