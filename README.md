@@ -43,7 +43,7 @@ The best interior design projects, created by highly qualified professionals. Co
 
 ## Demo
 
-You can access the page <a href="https://interior-design-vii.vercel.app/">here</a>.
+You can access the page [here](https://interior-design-zol.vercel.app).
 
 ## How to run
 
