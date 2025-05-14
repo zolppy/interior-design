@@ -1,4 +1,4 @@
-# Fashion Blog
+# Interior Design
 
 ![Next](https://img.shields.io/badge/NEXT-15.2.2-red?style=for-the-badge)
 ![React](https://img.shields.io/badge/REACT-19.0.0-indigo?style=for-the-badge)
