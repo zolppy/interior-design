@@ -8,25 +8,23 @@ import { ServicesSection } from "@/app/components/sections/ServicesSection";
 import { DesignersSection } from "@/app/components/sections/DesignersSection";
 import { PacksSection } from "@/app/components/sections/PacksSection";
 import { ContactSection } from "@/app/components/sections/ContactSection";
-import { CoffeeBtn } from "@/app/components/CoffeeBtn";
 import { Footer } from "@/app/components/Footer";
 
 export default function Home() {
-    return (
-        <>
-            <Header />
-            <Menu />
-            <MenuDesktop />
-            <Main>
-                <Title />
-                <CaseSection />
-                <ServicesSection />
-                <DesignersSection />
-                <PacksSection />
-                <ContactSection />
-                <CoffeeBtn />
-            </Main>
-            <Footer />
-        </>
-    );
+  return (
+    <>
+      <Header />
+      <Menu />
+      <MenuDesktop />
+      <Main>
+        <Title />
+        <CaseSection />
+        <ServicesSection />
+        <DesignersSection />
+        <PacksSection />
+        <ContactSection />
+      </Main>
+      <Footer />
+    </>
+  );
 }

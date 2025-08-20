@@ -6,34 +6,32 @@ import { poppins } from "@/utils/fonts";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
-    title: "Interior Design",
-    description:
-        "The best interior design projects, created by highly qualified professionals. Come and check out our success stories and place your order now.",
-    authors: [
-        {
-            name: "Gabriel Cavalcante de Jesus Oliveira",
-            url: "https://github.com/zolppy",
-        },
-    ],
+  title: "Interior Design",
+  description:
+    "The best interior design projects, created by highly qualified professionals. Come and check out our success stories and place your order now.",
+  authors: [
+    {
+      name: "Gabriel Cavalcante de Jesus Oliveira",
+      url: "https://github.com/zolppy",
+    },
+  ],
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en">
-            <MenuProvider>
-                <NavProvider>
-                    <body className={`${poppins.className} antialiased`}>
-                        {children}
-                    </body>
-                </NavProvider>
-            </MenuProvider>
-            <GoogleAnalytics gaId="G-C2VWGZBK20" />
-        </html>
-    );
+  return (
+    <html lang="en">
+      <MenuProvider>
+        <NavProvider>
+          <body className={`${poppins.className} antialiased`}>{children}</body>
+        </NavProvider>
+      </MenuProvider>
+      <GoogleAnalytics gaId="G-C2VWGZBK20" />
+    </html>
+  );
 }
 
 RootLayout.displayName = "RootLayout";

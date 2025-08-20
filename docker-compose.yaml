@@ -1,6 +1,6 @@
 services:
-    app:
-        build: .
-        container_name: interior-design
-        ports:
-            - 3002:3002
+  app:
+    build: .
+    container_name: interior-design
+    ports:
+      - 3002:3002

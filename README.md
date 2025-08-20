@@ -33,13 +33,13 @@ The best interior design projects, created by highly qualified professionals. Co
 
 ## Technologies
 
--   Next.js;
--   Tailwind CSS;
--   React
--   TypeScript;
--   Docker;
--   Framer Motion;
--   React Icons.
+- Next.js;
+- Tailwind CSS;
+- React
+- TypeScript;
+- Docker;
+- Framer Motion;
+- React Icons.
 
 ## Demo
 
