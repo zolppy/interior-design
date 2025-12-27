@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { MenuProvider } from "@/context/MenuCtx";
 import { NavProvider } from "@/context/NavCtx";
 import { poppins } from "@/utils/fonts";
@@ -29,7 +28,6 @@ export default function RootLayout({
           <body className={`${poppins.className} antialiased`}>{children}</body>
         </NavProvider>
       </MenuProvider>
-      <GoogleAnalytics gaId="G-C2VWGZBK20" />
     </html>
   );
 }
